@@ -76,7 +76,7 @@ df %>% dplyr::group_by(min_downloads) %>% summarise(means = mean(has_ads))
 
 df$rating <- pmax(0, pmin(5, df$rating_app))
 
-## VIF test
+## Strict exogeneity test
 plot(lm(rating_app ~ business_model+ hedonic+ hedonic*business_model,data = df))
 
 trunc_model <- truncreg(rating_app ~ business_model+ hedonic+ hedonic*business_model,data = df, Hess =T)
